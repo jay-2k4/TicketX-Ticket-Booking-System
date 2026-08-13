@@ -1,5 +1,5 @@
 const axios = require('axios');
-const Payment = require('../models/Payment');
+const Payment = require('../models/payment');
 
 const VALID_METHODS = ['card', 'upi', 'wallet', 'netbanking'];
 
