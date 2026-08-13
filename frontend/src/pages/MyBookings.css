@@ -1,0 +1,11 @@
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 720px;
+}
+.booking-item-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}

@@ -1,0 +1,19 @@
+.confirmation-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.confirmation-wrap > .eyebrow {
+  display: block;
+  margin-bottom: 8px;
+}
+.confirmation-wrap h1 {
+  font-size: 2rem;
+  margin-bottom: 28px;
+}
+.confirmation-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}

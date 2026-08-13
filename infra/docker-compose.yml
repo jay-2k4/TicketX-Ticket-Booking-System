@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  user-db:
+    image: postgres:16
+    container_name: ticketx-user-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ticketx
+      POSTGRES_PASSWORD: ticketx123
+      POSTGRES_DB: user_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - user_db_data:/var/lib/postgresql/data
+
+  event-db:
+    image: postgres:16
+    container_name: ticketx-event-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ticketx
+      POSTGRES_PASSWORD: ticketx123
+      POSTGRES_DB: event_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - event_db_data:/var/lib/postgresql/data
+
+  booking-db:
+    image: postgres:16
+    container_name: ticketx-booking-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ticketx
+      POSTGRES_PASSWORD: ticketx123
+      POSTGRES_DB: booking_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - booking_db_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: ticketx-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+volumes:
+  user_db_data:
+  event_db_data:
+  booking_db_data:

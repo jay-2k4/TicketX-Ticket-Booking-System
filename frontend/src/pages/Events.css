@@ -1,0 +1,35 @@
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.events-header h1 {
+  font-size: 2.2rem;
+  margin-top: 6px;
+}
+.events-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-chip {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--ink-line);
+  background: transparent;
+  color: var(--slate);
+  font-size: 0.82rem;
+  text-transform: capitalize;
+}
+.filter-chip.active {
+  border-color: var(--marquee);
+  color: var(--marquee);
+}
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}

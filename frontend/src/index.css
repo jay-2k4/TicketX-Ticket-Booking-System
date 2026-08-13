@@ -1,0 +1,226 @@
+/* ============================================
+   TicketX — Design Tokens
+   Theme: Box-office ledger. Ink-black gateway,
+   marquee-gold accent, ticket-paper cards.
+   ============================================ */
+:root {
+  /* Color */
+  --ink: #14151a;
+  --ink-soft: #1d1f27;
+  --ink-line: #2a2d38;
+  --paper: #f7f3e8;
+  --paper-dim: #ece5d2;
+  --marquee: #e8b923;
+  --marquee-dim: #c89a1b;
+  --velvet: #c14545;
+  --velvet-dim: #8f3232;
+  --emerald: #2f8f5b;
+  --emerald-dim: #21663f;
+  --ink-text: #eceef2;
+  --slate: #9497a3;
+  --slate-dark: #62656f;
+
+  /* Type */
+  --font-display: "Anton", "Arial Narrow", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  /* Layout */
+  --radius: 4px;
+  --radius-lg: 10px;
+  --max-width: 1180px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--ink);
+  color: var(--ink-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  font-weight: 400;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--marquee);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.page {
+  flex: 1;
+  padding: 48px 0 96px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: transform 0.12s ease, background 0.12s ease, border-color 0.12s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--marquee);
+  color: var(--ink);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--marquee-dim);
+}
+.btn-outline {
+  background: transparent;
+  border-color: var(--ink-line);
+  color: var(--ink-text);
+}
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--marquee);
+}
+.btn-danger {
+  background: transparent;
+  border-color: var(--velvet);
+  color: var(--velvet);
+}
+.btn-danger:hover:not(:disabled) {
+  background: var(--velvet);
+  color: var(--paper);
+}
+.btn-block {
+  width: 100%;
+}
+
+/* Form elements */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.field label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--slate);
+}
+.field input,
+.field select {
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  color: var(--ink-text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+.field input:focus,
+.field select:focus {
+  border-color: var(--marquee);
+}
+
+.error-banner {
+  background: rgba(193, 69, 69, 0.12);
+  border: 1px solid var(--velvet);
+  color: #f0b4b4;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--marquee);
+}
+
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.badge-pending {
+  background: rgba(232, 185, 35, 0.15);
+  color: var(--marquee);
+}
+.badge-confirmed {
+  background: rgba(47, 143, 91, 0.18);
+  color: var(--emerald);
+}
+.badge-cancelled,
+.badge-expired,
+.badge-failed {
+  background: rgba(193, 69, 69, 0.15);
+  color: var(--velvet);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--slate);
+}
+.empty-state h3 {
+  color: var(--ink-text);
+  margin-bottom: 8px;
+}

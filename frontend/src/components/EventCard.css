@@ -1,0 +1,41 @@
+.event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.event-card:hover {
+  border-color: var(--marquee);
+  transform: translateY(-2px);
+}
+.event-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.event-card h3 {
+  font-size: 1.3rem;
+  line-height: 1.2;
+}
+.event-card-venue {
+  color: var(--slate);
+  font-size: 0.88rem;
+}
+.event-card-footer {
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--ink-line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+.event-card-price {
+  color: var(--marquee);
+  font-weight: 600;
+}

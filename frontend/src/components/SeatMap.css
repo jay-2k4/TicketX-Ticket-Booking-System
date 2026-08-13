@@ -1,0 +1,102 @@
+.seatmap {
+  background: var(--ink-soft);
+  border: 1px solid var(--ink-line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.seatmap-stage {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--slate);
+  border-bottom: 2px solid var(--ink-line);
+  padding-bottom: 18px;
+  margin-bottom: 22px;
+}
+.seatmap-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.seatmap-row-label {
+  width: 18px;
+  font-family: var(--font-mono);
+  color: var(--slate);
+  font-size: 0.8rem;
+}
+.seatmap-seats {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.seat {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px 6px 3px 3px;
+  border: 1px solid var(--ink-line);
+  background: transparent;
+  color: var(--slate);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+.seat:not(:disabled):hover {
+  border-color: var(--marquee);
+  color: var(--ink-text);
+}
+.seat-selected {
+  background: var(--marquee);
+  border-color: var(--marquee);
+  color: var(--ink);
+  font-weight: 600;
+}
+.seat-locked {
+  background: var(--ink-line);
+  color: var(--slate-dark);
+  cursor: not-allowed;
+}
+.seat-booked {
+  background: var(--velvet-dim);
+  border-color: var(--velvet-dim);
+  color: rgba(255, 255, 255, 0.4);
+  cursor: not-allowed;
+}
+.seatmap-legend {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--ink-line);
+  font-size: 0.78rem;
+  color: var(--slate);
+}
+.seatmap-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+.dot-available {
+  border: 1px solid var(--ink-line);
+}
+.dot-selected {
+  background: var(--marquee);
+}
+.dot-locked {
+  background: var(--ink-line);
+}
+.dot-booked {
+  background: var(--velvet-dim);
+}

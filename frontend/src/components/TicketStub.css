@@ -1,0 +1,113 @@
+.ticket {
+  display: flex;
+  align-items: stretch;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+.ticket-main {
+  flex: 1;
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ticket-main h3 {
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+.ticket-venue {
+  color: #555;
+  font-size: 0.9rem;
+}
+.ticket-date {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #555;
+}
+.ticket-seats {
+  margin-top: 14px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.ticket-seat {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+.ticket-perforation {
+  width: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+.ticket-perforation span {
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+.ticket-stub {
+  width: 190px;
+  background: var(--paper-dim);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  border-left: 2px dashed rgba(0, 0, 0, 0.15);
+}
+.ticket-ref {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ticket-ref-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #777;
+}
+.ticket-ref-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.ticket-amount {
+  font-family: var(--font-mono);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: auto;
+}
+@media (max-width: 560px) {
+  .ticket {
+    flex-direction: column;
+  }
+  .ticket-perforation {
+    flex-direction: row;
+    width: 100%;
+    height: 0;
+    padding: 0 12px;
+  }
+  .ticket-perforation span {
+    margin-left: 0;
+    margin-top: -3px;
+  }
+  .ticket-stub {
+    width: 100%;
+    border-left: none;
+    border-top: 2px dashed rgba(0, 0, 0, 0.15);
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
