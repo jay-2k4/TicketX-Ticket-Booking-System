@@ -4,9 +4,9 @@ const cors = require('cors');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
+
 app.use(cors());
 
-// Health check for the gateway itself
 app.get('/', (req, res) => {
   res.json({ message: 'TicketX API Gateway is running' });
 });
@@ -41,7 +41,8 @@ app.use('/api/notifications', createProxyMiddleware({
   pathRewrite: { '^/': '/api/notifications/' },
 }));
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚪 API Gateway running on http://localhost:${PORT}`);
+const PORT = process.env.PORT || 10000;
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚪 API Gateway running on port ${PORT}`);
 });
