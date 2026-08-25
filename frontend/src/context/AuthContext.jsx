@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { loginUser, registerUser } from '../api/authApi';
+import { wakeUserService } from '../api/wakeService';
 
 const AuthContext = createContext(null);
 
@@ -10,9 +11,11 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const storedUser = localStorage.getItem('ticketx_user');
     const storedToken = localStorage.getItem('ticketx_token');
+
     if (storedUser && storedToken) {
       setUser(JSON.parse(storedUser));
     }
+
     setLoading(false);
   }, []);
 
@@ -23,14 +26,22 @@ export function AuthProvider({ children }) {
   };
 
   const login = async (credentials) => {
+    await wakeUserService();
+
     const data = await loginUser(credentials);
+
     persistSession(data);
+
     return data;
   };
 
   const register = async (details) => {
+    await wakeUserService();
+
     const data = await registerUser(details);
+
     persistSession(data);
+
     return data;
   };
 
@@ -41,7 +52,9 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout }}>
+    <AuthContext.Provider
+      value={{ user, loading, login, register, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -49,6 +62,10 @@ export function AuthProvider({ children }) {
 
 export function useAuth() {
   const ctx = useContext(AuthContext);
-  if (!ctx) throw new Error('useAuth must be used within an AuthProvider');
+
+  if (!ctx) {
+    throw new Error('useAuth must be used within an AuthProvider');
+  }
+
   return ctx;
 }

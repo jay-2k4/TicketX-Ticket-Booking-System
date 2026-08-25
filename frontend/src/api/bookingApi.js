@@ -1,17 +1,53 @@
 import axiosClient from './axiosClient';
+import { wakeBookingServices } from './wakeservice';
 
 // Maps to booking-service via the gateway: /api/bookings/*
-export const createBooking = (payload) =>
-  axiosClient.post('/bookings', payload).then((res) => res.data);
 
-export const confirmBooking = (id, payload) =>
-  axiosClient.patch(`/bookings/${id}/confirm`, payload).then((res) => res.data);
+export const createBooking = async (payload) => {
+  await wakeBookingServices();
 
-export const cancelBooking = (id) =>
-  axiosClient.patch(`/bookings/${id}/cancel`).then((res) => res.data);
+  const res = await axiosClient.post('/bookings', payload);
 
-export const getMyBookings = (userId) =>
-  axiosClient.get(`/bookings/user/${userId}`).then((res) => res.data);
+  return res.data;
+};
 
-export const getBookingById = (id) =>
-  axiosClient.get(`/bookings/${id}`).then((res) => res.data);
+export const confirmBooking = async (id, payload) => {
+  await wakeBookingServices();
+
+  const res = await axiosClient.patch(
+    `/bookings/${id}/confirm`,
+    payload
+  );
+
+  return res.data;
+};
+
+export const cancelBooking = async (id) => {
+  await wakeBookingServices();
+
+  const res = await axiosClient.patch(
+    `/bookings/${id}/cancel`
+  );
+
+  return res.data;
+};
+
+export const getMyBookings = async (userId) => {
+  await wakeBookingServices();
+
+  const res = await axiosClient.get(
+    `/bookings/user/${userId}`
+  );
+
+  return res.data;
+};
+
+export const getBookingById = async (id) => {
+  await wakeBookingServices();
+
+  const res = await axiosClient.get(
+    `/bookings/${id}`
+  );
+
+  return res.data;
+};
