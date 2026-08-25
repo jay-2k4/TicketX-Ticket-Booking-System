@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { loginUser, registerUser } from '../api/authApi';
-import { wakeUserService } from '../api/wakeService';
+import { wakeUserService } from '../api/wakeservice';
 
 const AuthContext = createContext(null);
 
