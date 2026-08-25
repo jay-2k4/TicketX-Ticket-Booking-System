@@ -19,13 +19,13 @@ const NOTIFICATION_SERVICE_URL =
 const sleep = (ms) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
-async function wakeService(url, name) {
+async function wakeService(url, name, healthPath = '/') {
   const maxAttempts = 6;
   const delay = 15000;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
-      const response = await fetch(`${url}/`, {
+      const response = await fetch(`${url}${healthPath}`, {
         method: 'GET',
         cache: 'no-store',
       });
@@ -55,22 +55,47 @@ async function wakeService(url, name) {
 }
 
 export async function wakeUserService() {
-  return wakeService(USER_SERVICE_URL, 'User service');
+  return wakeService(
+    USER_SERVICE_URL,
+    'User service'
+  );
 }
 
 export async function wakeEventServices() {
-  await wakeService(API_GATEWAY_URL, 'API Gateway');
-  await wakeService(EVENT_SERVICE_URL, 'Event service');
+  await wakeService(
+    API_GATEWAY_URL,
+    'API Gateway'
+  );
+
+  await wakeService(
+    EVENT_SERVICE_URL,
+    'Event service'
+  );
 }
 
 export async function wakeBookingServices() {
-  await wakeService(API_GATEWAY_URL, 'API Gateway');
-  await wakeService(BOOKING_SERVICE_URL, 'Booking service');
+  await wakeService(
+    API_GATEWAY_URL,
+    'API Gateway'
+  );
+
+  await wakeService(
+    BOOKING_SERVICE_URL,
+    'Booking service'
+  );
 }
 
 export async function wakePaymentServices() {
-  await wakeService(API_GATEWAY_URL, 'API Gateway');
-  await wakeService(PAYMENT_SERVICE_URL, 'Payment service');
+  await wakeService(
+    API_GATEWAY_URL,
+    'API Gateway'
+  );
+
+  await wakeService(
+    PAYMENT_SERVICE_URL,
+    'Payment service',
+    '/health'
+  );
 }
 
 export async function wakeNotificationService() {
